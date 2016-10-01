@@ -1,0 +1,16 @@
+<div class="pull-left"><h1>All Posts</h1></div>
+<div class="clearfix"></div>
+
+<hr>
+
+<div class="row">
+	<div class="col-md-12">
+		<p>There is <b>{{ posts.length }}</b> posts.</p>
+		<ul>
+			<li ng-repeat="post in posts">
+				<b>{{ post.title }}</b> by <i>{{ post.user.name }}</i> |
+				<button ng-click="view(post.id)" class="btn btn-warning btn-xs">view</button>
+			</li>
+		</ul>
+	</div>
+</div>

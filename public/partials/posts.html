@@ -1,0 +1,68 @@
+<div class="pull-left"><h1>Posts</h1></div>
+<div class="pull-right"><button style="margin-top: 20px;" type="button" class="btn btn-success" data-toggle="modal" data-target="#addPostModal" ng-click="currentPostReset()">+ Add Post</button></div>
+<div class="clearfix"></div>
+
+<hr>
+
+<div class="row">
+	<div class="col-md-12">
+		<p>You currently have <b>{{ posts.length }}</b> posts.</p>
+		<ul>
+			<li ng-repeat="post in posts">
+				<b>{{ post.title }}</b> by <i>{{ post.user.name }}</i> |
+				<button ng-click="load(post.id)" class="btn btn-info btn-xs">Update</button>
+				<button ng-click="remove(post.id)" class="btn btn-danger btn-xs">Remove</button>
+				<button ng-click="view(post.id)" class="btn btn-warning btn-xs">view</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="modal fade" id="addPostModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Add a Post</h4>
+      </div>
+      <div class="modal-body">
+        <p>Title<input class="form-control" ng-model="currentPostTitle" placeholder="Title..." type="text"></p>
+        <p>Slug<input class="form-control" ng-model="currentPostSlug" placeholder="Slug..." type="text"></p>
+        <p>Description
+            <textarea class="form-control" rows="5" ng-model="currentPostText" placeholder="Description..."></textarea>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="create()">Save Post</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="updatePostModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Update a Post</h4>
+      </div>
+      <div class="modal-body">
+      	<input type="hidden" ng-model="currentPostId" />
+
+        <!--<app-mult-box box-data="data.tag" selected-list="tagSelected" box-config="config.tag" ng-data="tagSelected"></app-mult-box>-->
+
+        <p>Title<input class="form-control" ng-model="currentPostTitle" placeholder="Title..." type="text"></p>
+        <p>Slug<input class="form-control" ng-model="currentPostSlug" placeholder="Slug..." type="text"></p>
+        <p>Description<textarea class="form-control" rows="5" ng-model="currentPostText" placeholder="Description..."></textarea></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="update()">Save Changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+

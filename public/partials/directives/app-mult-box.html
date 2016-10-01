@@ -1,0 +1,14 @@
+<style>
+    .autocomplete-list{
+        width: 50%;
+        margin-left: 15px;
+    }
+</style>
+
+
+<p>Categories
+    <multiple-autocomplete ng-model="selected"
+                           object-property="{{boxConfig.showField}}"
+                           suggestions-arr="boxData">
+    </multiple-autocomplete>
+</p>

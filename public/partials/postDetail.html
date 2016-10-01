@@ -1,0 +1,124 @@
+<style>
+    .user_name {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .comments-list .media {
+        border-bottom: 1px dotted #ccc;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div><h4 class="user_name">Title</h4> {{currentPostTitle}}</div>
+        <div><h4 class="user_name">Slug</h4> {{currentPostSlug}}</div>
+        <div><h4 class="user_name">Content</h4> {{currentPostText}}</div>
+    </div>
+    <div class="col-md-6">
+
+        <div><h4 class="user_name">Created by</h4> {{currentPostUser}}</div>
+        <div><h4 class="user_name">Created at</h4> {{currentCreatedAt}}</div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="row">
+    <div class="col-md-12 text-center">
+    <div>
+            <button style="margin-top:20px;" type="button" class="btn btn-success" data-toggle="modal"
+                    data-target="#addCommentModal" ng-click="currentCommentReset()">+ Add Comment
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="page-header">
+
+        <h1>
+            <small class="pull-right">{{comments.length}} comments</small>
+            Comments
+        </h1>
+
+
+    </div>
+    <div class="comments-list">
+
+
+        <div ng-repeat="comment in comments">
+            <div class="media">
+                <p class="pull-right">
+                    <small>{{comment.created_at}}</small>
+                </p>
+                <!--  <a class="media-left" href="#">
+                      <img src="http://lorempixel.com/40/40/people/1/">
+                  </a>-->
+                <div class="media-body">
+
+                    <h4 class="media-heading user_name">{{comment.user.name}}</h4>
+                    {{comment.text}}
+
+                    <p ng-show="authUser == comment.created_by">
+                        <button ng-click="showComment(comment.id)" class="btn btn-info btn-xs">Edit</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<div class="modal fade" id="addCommentModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add a Comment</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" ng-model="currentPostId" />
+                <p>Text
+                    <textarea class="form-control" rows="5" ng-model="currentCommentText" placeholder="Text..."></textarea>
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="createComment()">Save Comment</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="modal fade" id="updateCommentModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Update a Comment</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" ng-model="currentCommentId" />
+
+                <p>Text<textarea class="form-control" rows="5" ng-model="currentCommentText" placeholder="Text..."></textarea></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="updateComment()">Save Comment</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

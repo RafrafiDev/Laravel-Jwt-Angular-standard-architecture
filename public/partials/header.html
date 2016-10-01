@@ -1,0 +1,17 @@
+<ng-controller ng-controller="HeaderController">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="javascript:;" ng-click="home()">Blogy</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="javascript:;" ng-click="home()">My posts</a></li>
+                <li><a href="javascript:;" ng-click="allPosts()">All posts</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li><a href="javascript:;" ng-click="logout()"><span class="glyphicon glyphicon-log-in" ></span> {{loginState}} </a></li>
+            </ul>
+        </div>
+    </nav>
+</ng-controller>
